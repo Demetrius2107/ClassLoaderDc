@@ -15,7 +15,19 @@ public class ChameleonHandler <T> implements ChameleonExec<T>{
 
     @Override
     public void exec(String name, T data) {
-       /* final Collection<ChameleonBean> chameleonBeans = chameleonManger.get(name);*/
-
+        final Collection<ChameleonBean> chameleons = chameleonManger.get(name);
+        Do(chameleons,data);
     }
+
+
+    private void Do(Collection<ChameleonBean> chameleons,T data){
+        if(chameleons != null && chameleons.size() > 0){
+            for (Chameleon chameleon: chameleons){
+                chameleon.process(data);
+            }
+        }
+    }
+
+
+
 }
